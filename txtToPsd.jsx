@@ -1,10 +1,6 @@
-
-
 //read text file
-var filePath = prompt(
-  "Processing \nAdd File Path?",
-  "/Users/mubarmj/Desktop/Temp/CourtName.txt",
-);
+alert('Select Text File to Process');
+var filePath = File.openDialog('Select Text File', function (f) { return (f instanceof Folder) || f.name.match(/\.txt$/i);} );
 var textFile = new File(filePath);
 textFile.encoding = "UTF8";
 textFile.open("r");
@@ -31,10 +27,14 @@ for (var i = 0; i < layers.length; i++) {
 var tmp = app.preferences.rulerUnits;
 app.preferences.rulerUnits = tmp;
 // Get Destination Folder
-var pth = prompt(
-  "Processing \nNew PSD Destination Path?",
-  "/Users/mubarmj/Desktop/Temp/new",
-);
+// var pth = prompt(
+//   "Processing \nNew PSD Destination Path?",
+//   "/Users/mubarmj/Desktop/Temp/new",
+// );
+alert('Select New PSD Destination Path');
+
+var pth = Folder.selectDialog('Select New PSD Destination Path');
+
 var j = 0;
 var sliceNo ='';
 var fileName = '';
@@ -54,7 +54,7 @@ for (j = 0; j < lines.length; j++) {
     //Making file path
     filePathName = pth + "/" + j + " " + fileName + ".psd";
     
-    const saveFile = new File(filePathName);
+    var saveFile = new File(filePathName);
 
     // SavePSD(saveFile);
     //Preparing Options to Save PSD
@@ -96,3 +96,4 @@ alert("Done! \n" + j + " PSD files created.");
 
 //     app.activeDocument.saveAs(saveFile, psdSaveOptions, true, Extension.LOWERCASE);
 // }
+
