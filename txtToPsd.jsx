@@ -1,6 +1,6 @@
 //read text file
 alert('Select Text File to Process');
-var filePath = File.openDialog('Select Text File', function (f) { return (f instanceof Folder) || f.name.match(/\.txt$/i);} );
+var filePath = File.openDialog('Select Text File', '*.txt');
 var textFile = new File(filePath);
 textFile.encoding = "UTF8";
 textFile.open("r");
